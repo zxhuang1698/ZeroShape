@@ -1,0 +1,72 @@
+group: depth
+name: depth_est
+load: 
+
+batch_size: 44
+debug: false
+image_size: [224,224]
+gpu: 0
+max_epoch: 15
+output_root: output
+resume: false
+seed: 0
+yaml:
+
+arch:
+    depth:
+        pretrained: model/depth/pretrained_weights/omnidata_dpt_depth_v2.ckpt
+
+eval:
+    batch_size: 44
+    n_vis: 50
+    depth_cap: 
+    d_thresholds: [1.02,1.05,1.1,1.2]
+
+data:
+    num_classes_test: 15
+    max_img_cat: 
+    dataset_train: synthetic
+    dataset_test: synthetic
+    num_workers: 6
+    bgcolor: 1
+    pix3d:                       
+        cat: 
+    ocrtoc:                       
+        cat: 
+        erode_mask: 10
+    synthetic:        
+        subset: objaverse_LVIS,ShapeNet55
+        percentage: 1
+    train_sub:
+    val_sub:
+
+training:
+    n_sdf_points: 4096
+    depth_loss:
+        grad_reg: 0.1
+        depth_inv: true
+        mask_shrink: false
+
+loss_weight:
+    depth: 1
+    intr: 10
+    
+optim:
+    lr: 3.e-5
+    weight_decay: 0.05
+    clip_norm: 
+    amp: false
+    accum: 1
+    sched: false
+
+tb:
+    num_images: [4,8]
+
+freq:
+    print: 200
+    print_eval: 100
+    scalar: 1000 # iterations
+    vis: 1000 # iterations
+    save_vis: 1000
+    ckpt_latest: 1000 # iterations
+    eval: 1

@@ -1,0 +1,9 @@
+**__pycache__/
+slurm
+data/train_data
+data/OmniObject3D
+data/Ocrtoc
+data/Pix3D
+output
+**ckpt
+examples/pred**

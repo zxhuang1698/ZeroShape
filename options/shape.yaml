@@ -1,0 +1,110 @@
+group: shape
+name: shape_recon
+load: 
+
+batch_size: 28
+debug: false
+profile: false
+image_size: [224,224]
+gpu: 0
+max_epoch: 15
+output_root: output
+resume: false
+seed: 0
+yaml:
+
+pretrain:
+    depth: weights/depth.ckpt
+
+arch:
+    # general
+    num_heads: 8
+    latent_dim: 256
+    win_size: 16
+    # depth
+    depth:
+        encoder: resnet
+        n_blocks: 12
+        dsp: 2
+        pretrained: model/depth/pretrained_weights/omnidata_dpt_depth_v2.ckpt
+    # rgb
+    rgb:
+        encoder: 
+        n_blocks: 12 
+    # implicit
+    impl:
+        n_channels: 256
+        # attention-related
+        att_blocks: 2
+        mlp_ratio: 4.
+        posenc_perlayer: false
+        # mlp-related
+        mlp_layers: 8
+        posenc_3D: 0
+        skip_in: [2,4,6]
+
+eval:
+    batch_size: 2
+    brute_force: false
+    n_vis: 50
+    vox_res: 64
+    num_points: 10000
+    range: [-1.5,1.5]
+    icp: false
+    f_thresholds: [0.005, 0.01, 0.02, 0.05, 0.1, 0.2]
+
+data:
+    num_classes_test: 15
+    max_img_cat: 
+    dataset_train: synthetic
+    dataset_test: synthetic
+    num_workers: 6
+    bgcolor: 1
+    pix3d:                       
+        cat: 
+    ocrtoc:                       
+        cat: 
+        erode_mask: 
+    synthetic:        
+        subset: objaverse_LVIS,ShapeNet55
+        percentage: 1
+    train_sub:
+    val_sub:
+
+training:
+    n_sdf_points: 4096
+    shape_loss:
+        impt_weight: 1
+        impt_thres: 0.01
+    depth_loss:
+        grad_reg: 0.1
+        depth_inv: true
+        mask_shrink: false
+
+loss_weight:
+    shape: 1
+    depth: 
+    intr: 
+    
+optim:
+    lr: 3.e-5
+    lr_ft: 1.e-5
+    weight_decay: 0.05
+    fix_dpt: false
+    fix_clip: true
+    clip_norm: 
+    amp: false
+    accum: 1
+    sched: false
+
+tb:
+    num_images: [4,8]
+
+freq:
+    print: 200
+    print_eval: 100
+    scalar: 1000 # iterations
+    vis: 1000 # iterations
+    save_vis: 1000
+    ckpt_latest: 1000 # iterations
+    eval: 1
