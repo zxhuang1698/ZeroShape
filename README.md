@@ -93,7 +93,7 @@ To evaluate the model on a specific test set (`omniobj3d|ocrtoc|pix3d`), please 
 ```bash
 python evaluate.py --yaml=options/shape.yaml --name=run-shape --data.dataset_test=name_of_test_set --eval.vox_res=128 --eval.brute_force --eval.batch_size=1 --resume
 ```
-The evaluation results will be printed and saved at `output/depth/run-shape`. If you want to evalute the checkpoint we provided instead, feel free to create an empty folder `output/shape/run-shape` and move `weights/shape.ckpt` to `output/shape/run-shape/best.ckpt`
+The evaluation results will be printed and saved at `output/depth/run-shape`. If you want to evaluate the checkpoint we provided instead, feel free to create an empty folder `output/shape/run-shape` and move `weights/shape.ckpt` to `output/shape/run-shape/best.ckpt`
 
 ## References
 
