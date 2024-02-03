@@ -20,12 +20,26 @@ conda install -c conda-forge tqdm pyyaml pip matplotlib trimesh tensorboard
 pip install pyrender opencv-python pymcubes ninja timm
 ```
 
+To use the segmentation preprocessing tool, please run
+```bash
+pip install rembg
+```
+
 ## Demo
 Please download the pretrained weights for shape reconstruction at [this url](https://www.dropbox.com/scl/fi/hv3w9z59dqytievwviko4/shape.ckpt?rlkey=a2gut89kavrldmnt8b3df92oi&dl=0) and place it under the `weights` folder. We have prepared some images and masks under the `examples` folder. To reconstruct their shape, please run:
 ```bash
 python demo.py --yaml=options/shape.yaml --task=shape --datadir=examples --eval.vox_res=128 --ckpt=weights/shape.ckpt
 ```
-The results will be saved under the `examples/preds` folder. Feel free to try the demo with your own images by putting them into the `examples` folder. If you do not have masks, consider using external tools such as [Rembg](https://github.com/danielgatis/rembg).
+The results will be saved under the `examples/preds` folder. 
+
+To run the demo with your own image, please run:
+```bash
+python preprocess.py path-to-your-image
+```
+The preprocessed image and mask will be saved in the `my examples` folder. To reconstruct their shape, please run:
+```bash
+python demo.py --yaml=options/shape.yaml --task=shape --datadir=my_examples --eval.vox_res=128 --ckpt=weights/shape.ckpt
+```
 
 If you want to estimate the visible surface (depth and intrinsics), please download the pretrained weights for visible surface estimation at [this url](https://www.dropbox.com/scl/fi/1456be9dcwpwarrtgotny/depth.ckpt?rlkey=cmb3e76mw4dskomb0i51e99qt&dl=0) and place it under the `weights` folder. Then run:
 ```bash
