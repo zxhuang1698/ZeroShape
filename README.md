@@ -1,6 +1,6 @@
 # ZeroShape
 
-[[Project Page]](https://zixuanh.com/projects/zeroshape.html)  [[Paper]](https://zixuanh.com/projects/cvpr2024-zeroshape/paper.pdf)
+[[Project Page]](https://zixuanh.com/projects/zeroshape.html)  [[Paper]](https://zixuanh.com/projects/zeroshape/paper.pdf) [[Demo]](https://huggingface.co/spaces/zxhuang1698/ZeroShape)
 
 <img src="teaser.gif" width="100%"/>
 
