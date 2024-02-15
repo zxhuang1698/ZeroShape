@@ -32,11 +32,11 @@ python demo.py --yaml=options/shape.yaml --task=shape --datadir=examples --eval.
 ```
 The results will be saved under the `examples/preds` folder. 
 
-To run the demo with your own image, please run:
+To run the demo on your own images and masks, feel free to drop them in the `examples` folder. If you do not have mask, please run:
 ```bash
 python preprocess.py path-to-your-image
 ```
-The preprocessed image and mask will be saved in the `my examples` folder. To reconstruct their shape, please run:
+The preprocessed image and mask will be saved in the `my_examples` folder. To reconstruct their shape, please run:
 ```bash
 python demo.py --yaml=options/shape.yaml --task=shape --datadir=my_examples --eval.vox_res=128 --ckpt=weights/shape.ckpt
 ```
