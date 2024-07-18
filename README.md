@@ -113,10 +113,11 @@ The evaluation results will be printed and saved at `output/depth/run-shape`. If
 
 If you find our work helpful, please consider citing our paper.
 ```
-@article{huang2023zeroshape,
-  title={ZeroShape: Regression-based Zero-shot Shape Reconstruction},
-  author={Huang, Zixuan and Stojanov, Stefan and Thai, Anh and Jampani, Varun and Rehg, James M},
-  journal={arXiv preprint arXiv:2312.14198},
-  year={2023}
+@inproceedings{huang2024zeroshape,
+  author    = {Huang, Zixuan and Stojanov, Stefan and Thai, Anh and Jampani, Varun and Rehg, James M},
+  title     = {ZeroShape: Regression-based Zero-shot Shape Reconstruction},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages     = {10061--10071},
+  year      = {2024},
 }
 ```
